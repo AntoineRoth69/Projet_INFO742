@@ -9,6 +9,7 @@ public class Conducteur extends User {
 			Voiture voiture) {
 		super(prenom, adresse, mdp, estConnecte, drivingBehavior);
 		this.voiture = voiture;
+		this.listeTrajet = new ArrayList<Trajet>();
 	}
 	
 	public Trajet deposerTrajet (String adresse_depart, String date, String adresse_arrivee, int prix, String horaire,
