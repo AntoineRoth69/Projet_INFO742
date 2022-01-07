@@ -15,7 +15,12 @@ public class Reservation {
 		this.trajet = trajet;
 	}
 	
-	
+	public void exception() throws ReservationException {
+		    if (trajet.getNbPlacesDispo() <= 0) {
+		        throw new ReservationException("Il n'y a plus assez de places pour ce trajet");
+		    }
+		
+	}
 	
 	public void maj() {
 		trajet.updateNbPlaces(nbPlaces);
