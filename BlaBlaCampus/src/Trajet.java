@@ -53,6 +53,14 @@ public class Trajet {
 		this.adresse_depart = adresse_depart;
 	}
 
+	
+	public int getId_trajet() {
+		return id_trajet;
+	}
+
+	public void setId_trajet(int id_trajet) {
+		this.id_trajet = id_trajet;
+	}
 
 	public String getDate() {
 		return date;

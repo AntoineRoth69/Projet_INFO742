@@ -11,13 +11,15 @@ public class Conducteur extends User {
 		this.voiture = voiture;
 	}
 	
-	public void deposerTrajet (String adresse_depart, String date, String adresse_arrivee, int prix, String horaire,
+	public Trajet deposerTrajet (String adresse_depart, String date, String adresse_arrivee, int prix, String horaire,
 			int nbPlacesDispo) {
 		Trajet newTrajet = new Trajet(adresse_depart, date, adresse_arrivee, prix, horaire,
 			nbPlacesDispo, this);
 		listeTrajet.add(newTrajet);
 		this.carte_carburant = this.behavior.getAvantage(this.getCarte_carburant(), this);
+        return newTrajet;
 	}
+		
 	
 	public void validerReservation(boolean accept, Trajet trajet, Reservation resa) {
 		if (accept) {

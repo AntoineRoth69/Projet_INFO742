@@ -23,7 +23,6 @@ public class User implements MessageListener{
 	}
 	
 	// Methodes
-
 	@Override
 	public void onEventCreated(MessageEvent ev) {
 		// TODO Auto-generated method stub
