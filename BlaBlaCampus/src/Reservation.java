@@ -5,6 +5,7 @@ public class Reservation {
 	private int nbPlaces;
 	private User owner;
 	private Trajet trajet;
+	private float prix;
 	
 	public Reservation(int nbPlaces, User owner, Trajet trajet) {
 		super();
@@ -13,6 +14,7 @@ public class Reservation {
 		this.nbPlaces = nbPlaces;
 		this.owner = owner;
 		this.trajet = trajet;
+		this.prix = trajet.getPrix()*nbPlaces;
 	}
 	
 	//exceptions s'il n'y a plus assez de pplaces dispo pour ce trajet
@@ -23,7 +25,7 @@ public class Reservation {
 		
 	}
 	
-	//met à jour les attributs du trajet suite à une réservation
+	//met ï¿½ jour les attributs du trajet suite ï¿½ une rï¿½servation
 	public void maj() {
 		trajet.updateNbPlaces(nbPlaces);
 		trajet.updateListe(this);
@@ -84,4 +86,13 @@ public class Reservation {
 		this.trajet = trajet;
 	}
 
+	public float getPrix() {
+		return prix;
+	}
+
+	public void setPrix(float prix) {
+		this.prix = prix;
+	}
+
+	
 }

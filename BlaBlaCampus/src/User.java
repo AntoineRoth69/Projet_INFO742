@@ -7,10 +7,9 @@ public class User implements MessageListener{
 	private String adresse;
 	private String mdp;
 	private boolean estConnecte;
-	private Behavior behavior;
+	protected Behavior behavior;
 	private ArrayList<MessageEvent> messageRecus;
 	private ArrayList <Reservation>listeReservation;
-	private int carte_carburant; 
 	
 	// Constructeur, correspond a la methode creer compte
 	public User (String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
@@ -49,7 +48,7 @@ public class User implements MessageListener{
 	public void reserverTrajet(Trajet trajet, int nb_place) {
 		Reservation r = new Reservation(nb_place, this, trajet) ;
 		this.listeReservation.add(r);
-		this.behavior.getAvantage(trajet.getPrix(), this);
+		r.setPrix(this.behavior.getAvantage(r.getPrix(), this));
 	 
 	}
 	

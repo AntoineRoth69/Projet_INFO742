@@ -79,7 +79,7 @@ public class Trajet {
 	}
 
 
-	public void setPrix(int prix) {
+	public void setPrix(float prix) {
 		this.prix = prix;
 	}
 
