@@ -4,8 +4,12 @@ public class Voiture {
 	private String modele;
 	private String couleur;
 	
-	
-	
+	public Voiture(String marque, String modele, String couleur) {
+		super();
+		this.marque = marque;
+		this.modele = modele;
+		this.couleur = couleur;
+	}
 	
 	
 	//Getter and Setter

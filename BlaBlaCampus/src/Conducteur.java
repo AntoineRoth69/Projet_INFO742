@@ -12,7 +12,7 @@ public class Conducteur extends User {
 	}
 	
 	public void deposerTrajet (String adresse_depart, String date, String adresse_arrivee, int prix, String horaire,
-			int nbPlacesDispo, Conducteur conducteur) {
+			int nbPlacesDispo) {
 	Trajet newTrajet = new Trajet(adresse_depart, date, adresse_arrivee, prix, horaire,
 			nbPlacesDispo, this);
 	listeTrajet.add(newTrajet);
