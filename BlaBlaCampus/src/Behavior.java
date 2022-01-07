@@ -1,4 +1,4 @@
 
 public interface Behavior {
-	void getAvantage();
+	void getAvantage(int prix_trajet, Object o);
 }

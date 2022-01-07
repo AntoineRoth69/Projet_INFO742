@@ -6,8 +6,16 @@ public class NeutralBehavior implements Behavior {
 	}
 	
 	@Override
-	public void getAvantage() {
-		// TODO Auto-generated method stub
+	public void getAvantage(int prix_trajet, Object o) {
+		if (o instanceof User) {
+			
+
+
+		}
+		if (o instanceof Conducteur) {
+
+
+		}
 		
 	}
 }

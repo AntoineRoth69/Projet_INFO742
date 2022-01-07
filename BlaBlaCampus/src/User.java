@@ -7,9 +7,10 @@ public class User implements MessageListener{
 	private String adresse;
 	private String mdp;
 	private boolean estConnecte;
-	private Behavior drivingBehavior;
+	private Behavior behavior;
 	private ArrayList<MessageEvent> messageRecus;
 	private ArrayList <Reservation>listeReservation;
+	private int carte_carburant; 
 	
 	// Constructeur, correspond a� la methode creer compte
 	public User (String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
@@ -19,7 +20,7 @@ public class User implements MessageListener{
 		this.adresse = adresse;
 		this.mdp = mdp;
 		this.estConnecte = estConnecte;
-		this.drivingBehavior = drivingBehavior;
+		this.behavior = drivingBehavior;
 	}
 	
 	// Méthodes
@@ -48,8 +49,10 @@ public class User implements MessageListener{
 	public void reserverTrajet(Trajet trajet, int nb_place) {
 		Reservation r = new Reservation(nb_place, this, trajet) ;
 		this.listeReservation.add(r);
+		this.behavior.getAvantage(trajet.getPrix(), this);
 	 
 	}
+	
 	
 	
 	
@@ -59,7 +62,7 @@ public class User implements MessageListener{
 	// Equivalent de consulter profil 
 	public String toString() {
 		return "User [id_user=" + id_user + ", id_1=" + id_1 + ", prenom=" + prenom + ", adresse=" + adresse + ", mdp="
-				+ mdp + ", estConnecte=" + estConnecte + ", drivingBehavior=" + drivingBehavior + ", listeReservation="
+				+ mdp + ", estConnecte=" + estConnecte + ", behavior=" + behavior + ", listeReservation="
 				+ listeReservation + "]";
 	}
 
@@ -80,12 +83,12 @@ public class User implements MessageListener{
 		this.estConnecte = estConnecte;
 	}
 
-	public Behavior getDrivingBehavior() {
-		return drivingBehavior;
+	public Behavior getBehavior() {
+		return behavior;
 	}
 
-	public void setDrivingBehavior(Behavior drivingBehavior) {
-		this.drivingBehavior = drivingBehavior;
+	public void setBehavior(Behavior drivingBehavior) {
+		this.behavior = drivingBehavior;
 	}
 
 	public int getId_user() {
