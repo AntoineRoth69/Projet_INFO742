@@ -28,6 +28,11 @@ public class Trajet {
 		this.listeReservation.add(resa);
 	}
 	
+	public void removeListe(Reservation resa) {
+		this.listeReservation.remove(resa);
+	}
+	
+	
 	public void updateNbPlaces(int nb_places) {
 		this.nbPlacesDispo = nbPlacesDispo - nb_places;
 	}
