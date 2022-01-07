@@ -6,7 +6,7 @@ public class Trajet {
 	private String adresse_depart;
 	private String date;
 	private String adresse_arrivee;
-	private int prix;
+	private float prix;
 	private String horaire;
 	private int nbPlacesDispo;
 	private ArrayList <Reservation>listeReservation;
@@ -74,7 +74,7 @@ public class Trajet {
 	}
 
 
-	public int getPrix() {
+	public float getPrix() {
 		return prix;
 	}
 

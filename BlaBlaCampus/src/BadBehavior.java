@@ -6,15 +6,11 @@ public class BadBehavior implements Behavior{
 	}
 
 	@Override
-	public void getAvantage(int prix_trajet, Object o) {
+	public float getAvantage(float prix_trajet, Object o) {
+		float res = 0;
 		if (o instanceof User) {
-			
-
-
+			res = (float) (prix_trajet * 1.05);	
 		}
-		if (o instanceof Conducteur) {
-
-
-		}
+		return res;
 	}
 }

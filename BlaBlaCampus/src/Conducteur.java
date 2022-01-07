@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Conducteur extends User {
 	private Voiture voiture;
 	private ArrayList <Trajet>listeTrajet;
+	private int carte_carburant;
 	
 	public Conducteur(String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior,
 			Voiture voiture) {
@@ -34,5 +35,29 @@ public class Conducteur extends User {
 			}
 				}
 			}
+
+	public Voiture getVoiture() {
+		return voiture;
+	}
+
+	public void setVoiture(Voiture voiture) {
+		this.voiture = voiture;
+	}
+
+	public ArrayList<Trajet> getListeTrajet() {
+		return listeTrajet;
+	}
+
+	public void setListeTrajet(ArrayList<Trajet> listeTrajet) {
+		this.listeTrajet = listeTrajet;
+	}
+
+	public int getCarte_carburant() {
+		return carte_carburant;
+	}
+
+	public void setCarte_carburant(int carte_carburant) {
+		this.carte_carburant = carte_carburant;
+	}
 	
 }
