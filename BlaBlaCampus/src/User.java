@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class User {
+public class User implements MessageListener{
 	private int id_user;
 	private int id_1;
 	private String prenom;
@@ -8,6 +8,7 @@ public class User {
 	private String mdp;
 	private boolean estConnecte;
 	private Behavior drivingBehavior;
+	private ArrayList<MessageEvent> messageRecus;
 	private ArrayList <Reservation>listeReservation;
 	
 	// Constructeur, correspond à la méthode créer compte
@@ -70,6 +71,14 @@ public class User {
 
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+	@Override
+	public void onEventCreated(MessageEvent ev) {
+		// TODO Auto-generated method stub
+		if(ev.getDestinataire().equals(this)) {
+			this.messageRecus.add(ev);
+		}
 	}
 	
 	
