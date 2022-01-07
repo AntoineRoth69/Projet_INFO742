@@ -23,6 +23,19 @@ public class User implements MessageListener{
 	}
 	
 	// Méthodes
+
+	@Override
+	public void onEventCreated(MessageEvent ev) {
+		// TODO Auto-generated method stub
+		if(ev.getDestinataire().equals(this)) {
+			this.messageRecus.add(ev);
+		}
+	}
+	
+	public void envoyerMessage(User destinataire, String contenu) {
+		MessageEvent msg = new MessageEvent(this, contenu, destinataire);
+		destinataire.onEventCreated(msg);
+	}
 	
 	public void annulerReservation(Trajet trajet) {
 		for (Reservation r : listeReservation) {
@@ -86,15 +99,4 @@ public class User implements MessageListener{
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
-
-	@Override
-	public void onEventCreated(MessageEvent ev) {
-		// TODO Auto-generated method stub
-		if(ev.getDestinataire().equals(this)) {
-			this.messageRecus.add(ev);
-		}
-	}
-	
-	
-
 }

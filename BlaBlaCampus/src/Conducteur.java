@@ -1,8 +1,8 @@
 
 public class Conducteur extends User {
 
-	public Conducteur(int id_user, String prenom) {
-		super(id_user, prenom);
+	public Conducteur(String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
+		super(prenom, adresse, mdp, estConnecte, drivingBehavior);
 		// TODO Auto-generated constructor stub
 	}
 	
