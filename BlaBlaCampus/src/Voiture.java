@@ -4,6 +4,11 @@ public class Voiture {
 	private String modele;
 	private String couleur;
 	
+	
+	
+	
+	
+	//Getter and Setter
 	public String getMarque() {
 		return marque;
 	}
