@@ -11,7 +11,7 @@ public class User implements MessageListener{
 	private ArrayList<MessageEvent> messageRecus;
 	private ArrayList <Reservation>listeReservation;
 	
-	// Constructeur, correspond à la méthode créer compte
+	// Constructeur, correspond a� la methode creer compte
 	public User (String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
 		this.id_user = id_1;
 		this.id_1 = id_1++;

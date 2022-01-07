@@ -10,10 +10,11 @@ public class Trajet {
 	private String horaire;
 	private int nbPlacesDispo;
 	private ArrayList <Reservation>listeReservation;
+	private Conducteur conducteur;
 	
 	
 	public Trajet(String adresse_depart, String date, String adresse_arrivee, int prix, String horaire,
-			int nbPlacesDispo) {
+			int nbPlacesDispo, Conducteur conducteur) {
 		this.id_trajet = id_1;
 		this.id_1 = id_1++;
 		this.adresse_depart = adresse_depart;
@@ -22,6 +23,7 @@ public class Trajet {
 		this.prix = prix;
 		this.horaire = horaire;
 		this.nbPlacesDispo = nbPlacesDispo;
+		this.conducteur = conducteur;
 	}
 
 	public void updateListe(Reservation resa) {
@@ -32,6 +34,9 @@ public class Trajet {
 		this.listeReservation.remove(resa);
 	}
 	
+	public void addListe (Reservation resa) {
+		this.listeReservation.remove(resa);
+	}
 	
 	public void updateNbPlaces(int nb_places) {
 		this.nbPlacesDispo = nbPlacesDispo - nb_places;

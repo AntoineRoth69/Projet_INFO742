@@ -15,6 +15,7 @@ public class Reservation {
 		this.trajet = trajet;
 	}
 	
+	//exceptions s'il n'y a plus assez de pplaces dispo pour ce trajet
 	public void exception() throws ReservationException {
 		    if (trajet.getNbPlacesDispo() <= 0) {
 		        throw new ReservationException("Il n'y a plus assez de places pour ce trajet");
@@ -22,17 +23,17 @@ public class Reservation {
 		
 	}
 	
+	//met à jour les attributs du trajet suite à une réservation
 	public void maj() {
 		trajet.updateNbPlaces(nbPlaces);
 		trajet.updateListe(this);
 	}
 
 
-
+	//getter et setter
 	public int getId_reservation() {
 		return id_reservation;
 	}
-
 
 
 	public void setId_reservation(int id_reservation) {
@@ -40,11 +41,9 @@ public class Reservation {
 	}
 
 
-
 	public int getId_1() {
 		return id_1;
 	}
-
 
 
 	public void setId_1(int id_1) {
@@ -58,11 +57,9 @@ public class Reservation {
 	}
 
 
-
 	public void setNbPlaces(int nbPlaces) {
 		this.nbPlaces = nbPlaces;
 	}
-
 
 
 	public User getOwner() {
