@@ -30,12 +30,26 @@ public class User implements MessageListener{
 				trajet.removeListe(r);
 			}
 		}
-		
+	}
+	
+	public void reserverTrajet(Trajet trajet, int nb_place) {
+		Reservation r = new Reservation(nb_place, this, trajet) ;
+		this.listeReservation.add(r);
+	 
 	}
 	
 	
 	
 	
+	
+	
+	// Equivalent de consulter profil 
+	public String toString() {
+		return "User [id_user=" + id_user + ", id_1=" + id_1 + ", prenom=" + prenom + ", adresse=" + adresse + ", mdp="
+				+ mdp + ", estConnecte=" + estConnecte + ", drivingBehavior=" + drivingBehavior + ", listeReservation="
+				+ listeReservation + "]";
+	}
+
 	//Getter et setter
 	public String getAdresse() {
 		return adresse;
