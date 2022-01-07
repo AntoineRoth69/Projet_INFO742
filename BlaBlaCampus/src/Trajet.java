@@ -24,6 +24,7 @@ public class Trajet {
 		this.horaire = horaire;
 		this.nbPlacesDispo = nbPlacesDispo;
 		this.conducteur = conducteur;
+		this.listeReservation = new ArrayList<Reservation>();
 	}
 
 	public void updateListe(Reservation resa) {

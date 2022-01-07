@@ -20,6 +20,8 @@ public class User implements MessageListener{
 		this.mdp = mdp;
 		this.estConnecte = estConnecte;
 		this.behavior = drivingBehavior;
+		this.messageRecus = new ArrayList<MessageEvent>();
+		this.listeReservation = new ArrayList<Reservation>();
 	}
 	
 	// Methodes
