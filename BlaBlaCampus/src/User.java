@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class User implements MessageListener{
 	private int id_user;
-	private int id_1;
+	private int id_1 = 0;
 	private String prenom;
 	private String adresse;
 	private String mdp;
@@ -12,7 +12,7 @@ public class User implements MessageListener{
 	private ArrayList <Reservation>listeReservation;
 	private int carte_carburant; 
 	
-	// Constructeur, correspond a� la methode creer compte
+	// Constructeur, correspond a la methode creer compte
 	public User (String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
 		this.id_user = id_1;
 		this.id_1 = id_1++;
@@ -23,7 +23,7 @@ public class User implements MessageListener{
 		this.behavior = drivingBehavior;
 	}
 	
-	// Méthodes
+	// Methodes
 
 	@Override
 	public void onEventCreated(MessageEvent ev) {
@@ -52,9 +52,6 @@ public class User implements MessageListener{
 		this.behavior.getAvantage(trajet.getPrix(), this);
 	 
 	}
-	
-	
-	
 	
 	
 	
