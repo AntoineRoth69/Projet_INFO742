@@ -52,4 +52,17 @@ public class User_unit_tests {
 		assertTrue(this.ue.getListeReservation().isEmpty());
 		assertTrue(this.trajet_1.getListeReservation().isEmpty());
 	}
+	
+	/**
+	 * test de la méthode transformant un utilisateur simple en conducteur
+	 * (cette méthode sera utilisee lorsque l'utilisateur renseigne une voiture dans son profil
+	 * @throws Throwable 
+	 */
+	@Test
+	public void testChangeUserToDriver() throws Throwable {
+		Voiture newCar = new Voiture("Citroen", "C3", "zebree");
+		this.ud = this.ud.changeUserToDriver(newCar);
+		assertTrue(this.ud instanceof Conducteur);
+		assertEquals(newCar, ((Conducteur) this.ud).getVoiture());
+	}
 }

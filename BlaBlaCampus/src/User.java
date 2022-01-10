@@ -104,6 +104,12 @@ public class User implements MessageListener, DemandeResaListener, ResaAccepteeL
 		}
 		return null;
 	}
+	
+	public Conducteur changeUserToDriver(Voiture v) throws Throwable {
+		Conducteur newDriver = new Conducteur(this,v);
+		this.finalize();
+		return newDriver;
+	}
 
 	// Equivalent de consulter profil
 	public String toString() {
@@ -158,6 +164,14 @@ public class User implements MessageListener, DemandeResaListener, ResaAccepteeL
 
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+	public String getMdp() {
+		return mdp;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 	public ArrayList<MessageEvent> getMessageRecus() {

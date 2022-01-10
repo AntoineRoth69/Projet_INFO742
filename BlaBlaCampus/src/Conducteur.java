@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Conducteur extends User implements DemandeResaListener {
 	// Attributs
 	private Voiture voiture;
-	private ArrayList <Trajet>listeTrajet;
+	private ArrayList <Trajet>listeTrajet = new ArrayList<>();
 	private float carte_carburant;
 	private Scanner scan = new Scanner(System.in);
 	
@@ -23,7 +23,11 @@ public class Conducteur extends User implements DemandeResaListener {
 			Voiture voiture) {
 		super(prenom, adresse, mdp, estConnecte, drivingBehavior);
 		this.voiture = voiture;
-		this.listeTrajet = new ArrayList<Trajet>();
+	}
+	
+	public Conducteur(User u, Voiture v) {
+		super(u.getPrenom(),u.getAdresse(),u.getMdp(),u.isEstConnecte(),u.getBehavior());
+		this.voiture = v;
 	}
 	
 	/**
