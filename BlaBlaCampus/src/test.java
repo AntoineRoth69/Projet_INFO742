@@ -13,10 +13,10 @@ public class test {
 		Trajet trajet_1 = conducteur_1.deposerTrajet ("rue du pont de the Annecy","10/01/2022","Campus Annecy", 5, "7h50",4);
 		user_1.reserverTrajet(trajet_1, 1);
 		System.out.println(user_1);
-		// vérification des avantages liés au comportement 
+		//
 		System.out.println("Le conducteur a une carte de : " + conducteur_1.getCarte_carburant() + "€");
-		System.out.println("Le prix du trajet est : " + trajet_1.getPrix());
-		System.out.println("Le passage paie : " + user_1.chercherReservation(trajet_1).getPrix());
+		System.out.println("Le prix du trajet est : " + trajet_1.getPrix()+ "€");
+		System.out.println("Le passager paie : " + user_1.chercherReservation(trajet_1).getPrix()+ "€");
 		
 		//2eme resa
 		Trajet trajet_2 = conducteur_2.deposerTrajet ("rue du pont de the Annecy","22/01/2022","Campus Annecy", 5, "10h",4);
@@ -28,11 +28,10 @@ public class test {
 		//l'auto incremente des id fonctionne bien la resa aussi
 		
 		
-		//test des prix
-		System.out.println("Le conducteur a une carte de : " + conducteur_1.getCarte_carburant() + "euros ");
-		System.out.println("");
-		System.out.println("Le prix du trajet est : " + trajet_1.getPrix());
-		System.out.println("Le passage paie : " + user_1.chercherReservation(trajet_1).getPrix());
+		//Test des avantages liés au comportment
+		System.out.println("Le conducteur a une carte de : " + conducteur_1.getCarte_carburant() + " euros ");
+		System.out.println("Le prix du trajet est : " + trajet_1.getPrix()+" euros ");
+		System.out.println("Le passage paie : " + user_1.chercherReservation(trajet_1).getPrix()+" euros ");
 				
 		//Test exception
 		user_1.reserverTrajet(trajet_1, 6);
