@@ -50,7 +50,7 @@ public class Trajet {
 	}
 	
 	public String toString(){
-	return "depart de " + this.adresse_depart + " le " + this.date + " a " + this.horaire + "et arrivee a " + adresse_arrivee;
+	return "depart de " + this.adresse_depart + " le " + this.date + " a " + this.horaire + " et arrivee a " + adresse_arrivee;
 }
 
 	
