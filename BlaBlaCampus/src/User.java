@@ -38,12 +38,15 @@ public class User implements MessageListener{
 		destinataire.onEventCreated(msg);
 	}
 	
+	//Suppression de la resa dans trajet et dans user
 	public void annulerReservation(Trajet trajet) {
 		for (Reservation r : listeReservation) {
 			if (trajet.equals(r.getTrajet())) {
 				trajet.removeListe(r);
+				this.listeReservation.remove(r);
 			}
 		}
+		
 	}
 	
 	public void reserverTrajet(Trajet trajet, int nb_place) {

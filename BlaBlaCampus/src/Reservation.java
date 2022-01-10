@@ -20,8 +20,7 @@ public class Reservation {
 	
 	//met a jour les attributs du trajet suite a une reservation
 	public void maj() {
-		try {
-			trajet.updateNbPlaces(nbPlaces);
+		try {trajet.updateNbPlaces(nbPlaces);
 		} catch (ReservationException e) {
 			System.out.println(e);
 		}
