@@ -13,7 +13,7 @@ public class NeutralBehavior implements Behavior {
 	 */
 	@Override
 	public float getAvantage(float prix_trajet, Object o) {
-		// Le passager va payer son trajet 5% moins chere que le prix réel
+		// Le passager va payer son trajet 5 pourcents moins chere que le prix réel
 		float res = 0;
 		if (o instanceof User) {
 			res = (float) (prix_trajet * 0.95);

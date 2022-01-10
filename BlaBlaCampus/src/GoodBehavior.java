@@ -14,7 +14,7 @@ public class GoodBehavior implements Behavior {
 	public float getAvantage(float prix_trajet, Object o) {
 		float res = 0;
 		if (o instanceof User) {
-			// Le passager va payer son trajet 10% moins chere que le prix réel
+			// Le passager va payer son trajet 10 pourcents moins chere que le prix réel
 			res = (float) (prix_trajet * 0.90);
 			
 

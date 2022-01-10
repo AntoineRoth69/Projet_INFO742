@@ -9,7 +9,7 @@ public class BadBehavior implements Behavior{
 	 *@param prix_trajet
 	 *@param o
 	 *@return float 
-	 * Permet d'affecter le desavantage aux passagers mal note, il paye 5% plus chere
+	 * Permet d'affecter le desavantage aux passagers mal note, il paye 5 pourcents plus chere
 	 */
 	@Override
 	public float getAvantage(float prix_trajet, Object o) {
