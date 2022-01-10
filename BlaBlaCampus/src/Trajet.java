@@ -39,8 +39,13 @@ public class Trajet {
 		this.listeReservation.remove(resa);
 	}
 	
-	public void updateNbPlaces(int nb_places) {
+	//On gère l'exception ici
+	public void updateNbPlaces(int nb_places) throws ReservationException {
+		if (this.getNbPlacesDispo() <= 0) {
+	        throw new ReservationException("MAJ impossible, nb de places max atteint");
+	    }
 		this.nbPlacesDispo = nbPlacesDispo - nb_places;
+	
 	}
 
 	

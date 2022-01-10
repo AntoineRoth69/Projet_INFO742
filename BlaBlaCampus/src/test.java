@@ -27,6 +27,13 @@ public class test {
 		
 		//l'auto incremente des id fonctionne bien la resa aussi
 		
+		
+		//test des prix
+		System.out.println("Le conducteur a une carte de : " + conducteur_1.getCarte_carburant() + "euros ");
+		System.out.println("");
+		System.out.println("Le prix du trajet est : " + trajet_1.getPrix());
+		System.out.println("Le passage paie : " + user_1.chercherReservation(trajet_1).getPrix());
+				
 		//Test exception
 		user_1.reserverTrajet(trajet_1, 6);
 		System.out.println(user_1);
