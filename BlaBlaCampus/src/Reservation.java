@@ -17,18 +17,17 @@ public class Reservation {
 		this.prix = trajet.getPrix()*nbPlaces;
 	}
 	
-	//exceptions s'il n'y a plus assez de places disponibles pour ce trajet
-	public void exception() throws ReservationException {
-		    if (trajet.getNbPlacesDispo() <= 0) {
-		        throw new ReservationException("Il n'y a plus assez de places pour ce trajet");
-		    }
-		
-	}
 	
 	//met a jour les attributs du trajet suite a une reservation
 	public void maj() {
-		trajet.updateNbPlaces(nbPlaces);
+		try {
+			trajet.updateNbPlaces(nbPlaces);
+		} catch (ReservationException e) {
+			System.out.println(e);
+		}
+		
 		trajet.updateListe(this);
+		
 	}
 
 	public String toString() {
