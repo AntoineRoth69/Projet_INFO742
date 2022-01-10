@@ -19,14 +19,9 @@ public class Reservation {
 	
 	
 	//met a jour les attributs du trajet suite a une reservation
-	public void maj() {
-		try {trajet.updateNbPlaces(nbPlaces);
-		} catch (ReservationException e) {
-			System.out.println(e);
-		}
-		
-		trajet.updateListe(this);
-		
+	public void maj(int nb_place) {
+		trajet.updateNbPlaces(nbPlaces);
+		trajet.updateListe(this);		
 	}
 
 	public String toString() {

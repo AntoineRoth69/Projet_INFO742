@@ -1,6 +1,6 @@
 
 public class test {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ReservationException{
 		GoodBehavior good = new GoodBehavior();
 		Voiture voiture_1 = new Voiture("Peugeot","308","noire");
 		Voiture voiture_2 = new Voiture("Citroen","C3","zebree");

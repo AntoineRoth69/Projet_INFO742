@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class User implements MessageListener{
+public class User implements MessageListener {
 	private static final AtomicInteger ID_FACTORY = new AtomicInteger();
 	private int id_user;
 	private String prenom;
@@ -10,10 +10,10 @@ public class User implements MessageListener{
 	private boolean estConnecte;
 	protected Behavior behavior;
 	private ArrayList<MessageEvent> messageRecus;
-	private ArrayList <Reservation>listeReservation;
-	
+	private ArrayList<Reservation> listeReservation;
+
 	// Constructeur, correspond a la methode creer compte
-	public User (String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
+	public User(String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
 		this.id_user = ID_FACTORY.getAndIncrement();
 		this.prenom = prenom;
 		this.adresse = adresse;
@@ -23,22 +23,22 @@ public class User implements MessageListener{
 		this.messageRecus = new ArrayList<MessageEvent>();
 		this.listeReservation = new ArrayList<Reservation>();
 	}
-	
+
 	// Methodes
 	@Override
 	public void onEventCreated(MessageEvent ev) {
 		// TODO Auto-generated method stub
-		if(ev.getDestinataire().equals(this)) {
+		if (ev.getDestinataire().equals(this)) {
 			this.messageRecus.add(ev);
 		}
 	}
-	
+
 	public void envoyerMessage(User destinataire, String contenu) {
 		MessageEvent msg = new MessageEvent(this, contenu, destinataire);
 		destinataire.onEventCreated(msg);
 	}
-	
-	//Suppression de la resa dans trajet et dans user
+
+	// Suppression de la resa dans trajet et dans user
 	public void annulerReservation(Trajet trajet) {
 		for (Reservation r : listeReservation) {
 			if (trajet.equals(r.getTrajet())) {
@@ -46,16 +46,21 @@ public class User implements MessageListener{
 				this.listeReservation.remove(r);
 			}
 		}
-		
+
 	}
-	
-	public void reserverTrajet(Trajet trajet, int nb_place) {
-		Reservation r = new Reservation(nb_place, this, trajet) ;
-		this.listeReservation.add(r);
-		r.setPrix(this.behavior.getAvantage(r.getPrix(), this));
-		r.maj();	 
+
+	public void reserverTrajet(Trajet trajet, int nb_place) throws ReservationException {
+		if ((trajet.getNbPlacesDispo() - nb_place) <= 0) {
+			throw new ReservationException("Resa impossible, nb de places max atteint");
+		} 
+		else {
+			Reservation r = new Reservation(nb_place, this, trajet);
+			this.listeReservation.add(r);
+			r.setPrix(this.behavior.getAvantage(r.getPrix(), this));
+			r.maj(nb_place);
+		}
 	}
-	
+
 	public Reservation chercherReservation(Trajet trajet) {
 		for (Reservation r : listeReservation) {
 			if (trajet.equals(r.getTrajet())) {
@@ -64,20 +69,20 @@ public class User implements MessageListener{
 		}
 		return null;
 	}
-	
-	
-	// Equivalent de consulter profil 
+
+	// Equivalent de consulter profil
 	public String toString() {
-		String s= "User [id_user=" + id_user + ", prenom=" + prenom + ", adresse=" + adresse + ", estConnecte=" + estConnecte + ", Reservation effectuee :";
-				
-			for (Reservation r : listeReservation) {
-				s += r.toString();
-				}
+		String s = "User [id_user=" + id_user + ", prenom=" + prenom + ", adresse=" + adresse + ", estConnecte="
+				+ estConnecte + ", Reservation effectuee :";
+
+		for (Reservation r : listeReservation) {
+			s += r.toString();
+		}
 		s += "]";
 		return s;
 	}
 
-	//Getter et setter
+	// Getter et setter
 	public String getAdresse() {
 		return adresse;
 	}
