@@ -25,12 +25,17 @@ public class Reservation {
 		
 	}
 	
-	//met � jour les attributs du trajet suite � une r�servation
+	//met a jour les attributs du trajet suite � une r�servation
 	public void maj() {
 		trajet.updateNbPlaces(nbPlaces);
 		trajet.updateListe(this);
 	}
 
+	public String toString() {
+			return "id_resa = " + id_reservation + "\n" ;
+		}
+		
+	
 
 	//getter et setter
 	public int getId_reservation() {

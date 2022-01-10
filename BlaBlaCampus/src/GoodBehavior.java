@@ -17,8 +17,8 @@ public class GoodBehavior implements Behavior {
 			((Conducteur) o).setCarte_carburant(((Conducteur) o).getCarte_carburant()+2);
 
 		}
-		return res;
-		
+		return res;	
 	
 	}
+	
 }

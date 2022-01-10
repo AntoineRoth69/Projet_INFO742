@@ -54,13 +54,15 @@ public class User implements MessageListener{
 	}
 	
 	
-	
-	
 	// Equivalent de consulter profil 
 	public String toString() {
-		return "User [id_user=" + id_user + ", id_1=" + id_1 + ", prenom=" + prenom + ", adresse=" + adresse + ", mdp="
-				+ mdp + ", estConnecte=" + estConnecte + ", behavior=" + behavior + ", listeReservation="
-				+ listeReservation + "]";
+		String s= "User [id_user=" + id_user + ", prenom=" + prenom + ", adresse=" + adresse + ", estConnecte=" + estConnecte + ", Reservation effectuee :";
+				
+			for (Reservation r : listeReservation) {
+				s += r.toString();
+				}
+		s += "]";
+		return s;
 	}
 
 	//Getter et setter
