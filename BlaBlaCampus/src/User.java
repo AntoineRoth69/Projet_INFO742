@@ -105,6 +105,7 @@ public class User implements MessageListener, DemandeResaListener, ResaAccepteeL
 		return null;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public Conducteur changeUserToDriver(Voiture v) throws Throwable {
 		Conducteur newDriver = new Conducteur(this,v);
 		this.finalize();
