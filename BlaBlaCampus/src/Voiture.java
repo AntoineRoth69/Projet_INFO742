@@ -1,9 +1,17 @@
 
 public class Voiture {
+	// Atributs
 	private String marque;
 	private String modele;
 	private String couleur;
 	
+	
+	/**
+	 * @param marque
+	 * @param modele
+	 * @param couleur
+	 * Constructeur, permet d'entrer une nouvelle voiture
+	 */
 	public Voiture(String marque, String modele, String couleur) {
 		super();
 		this.marque = marque;
