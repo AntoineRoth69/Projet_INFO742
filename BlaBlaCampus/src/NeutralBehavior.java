@@ -22,9 +22,6 @@ public class NeutralBehavior implements Behavior {
 		if (o instanceof Conducteur) {
 			// Le conducteur a une carte essence sur laquel s'ajoute un euros
 			((Conducteur) o).setCarte_carburant(((Conducteur) o).getCarte_carburant()+1);
-			
-			
-
 
 		}
 		return res;
