@@ -114,8 +114,8 @@ public class Trajet {
 	public void setConducteur(Conducteur conducteur) {
 		this.conducteur = conducteur;
 	}
-	
-	
-	
 
+	public ArrayList<Reservation> getListeReservation() {
+		return listeReservation;
+	}
 }

@@ -13,23 +13,29 @@ public class User_unit_tests {
 	 */
 	@Test
 	public void envoyerMessage() {
-		MessageEvent msg = new MessageEvent(ue,"bla",ud);
-		MessageEvent m = this.ue.envoyerMessage(ud, "bla");
-		assertEquals(msg.getContenu(),m.getContenu());
-		assertEquals(msg.getDestinataire(),m.getDestinataire());
-		assertEquals(msg.getSource(),m.getSource());
+		this.ue.envoyerMessage(ud, "bla");
+		assertEquals("bla",ud.getMessageRecus().get(0).getContenu());
+		assertEquals(ud,ud.getMessageRecus().get(0).getDestinataire());
+		assertEquals(ue,ud.getMessageRecus().get(0).getSource());
 	}
 
 	/**
-	 * test de la méthode reserver trajet 
+	 * test des méthodes de reservation d'un trajet
 	 * @throws ReservationException 
 	 */
 	@Test
-	public void testReserverTrajet() throws ReservationException {
-		int sizeListRes = this.ue.getListeReservation().size();
-		this.ue.reservationAcceptee(this.trajet_1,1);
-		assertEquals(sizeListRes+1,this.ue.getListeReservation().size());
-		assertEquals(this.trajet_1,this.ue.getListeReservation().get(sizeListRes).getTrajet());
+	public void testReservationTrajet() throws ReservationException {
+		// La réservation n'est pas valide (le conducteur n'accepte pas la reservation)
+		this.ud.demandeReservation(this.trajet_1,3);
+		assertEquals(0,this.ud.getListeReservation().size());
+		assertEquals(4,this.trajet_1.getNbPlacesDispo());
+		assertEquals(0,this.trajet_1.getListeReservation().size());
+		
+		// La réservation est valide (le conducteur accepte la reservation)
+		this.ud.demandeReservation(this.trajet_1,1);
+		assertEquals(1,this.ud.getListeReservation().size());
+		assertEquals(3,this.trajet_1.getNbPlacesDispo());
+		assertEquals(1,this.trajet_1.getListeReservation().size());
 	}
 
 	/**
@@ -38,10 +44,12 @@ public class User_unit_tests {
 	 */
 	@Test
 	public void testAnnulerReservation() throws ReservationException {
+		// On cree une reservation
 		this.ue.reservationAcceptee(this.trajet_1,1);
-		int sizeListRes = this.ue.getListeReservation().size();
+		
+		// On annule la reservation
 		this.ue.annulerReservation(trajet_1);
-		assertEquals(sizeListRes-1,this.ue.getListeReservation().size());
 		assertTrue(this.ue.getListeReservation().isEmpty());
+		assertTrue(this.trajet_1.getListeReservation().isEmpty());
 	}
 }

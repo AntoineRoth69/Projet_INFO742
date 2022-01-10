@@ -21,7 +21,7 @@ public class Reservation {
 	//met a jour les attributs du trajet suite a une reservation
 	public void maj(int nb_place) {
 		trajet.updateNbPlaces(nbPlaces);
-		trajet.removeListe(this);		
+		trajet.addListe(this);
 	}
 
 	public String toString() {

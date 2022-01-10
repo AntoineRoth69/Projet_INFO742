@@ -45,13 +45,12 @@ public class User implements MessageListener, DemandeResaListener, ResaAccepteeL
 	/**
 	 * @param destinataire
 	 * @param contenu
-	 * Permet d'envoyer un String (passe en parametre de la methode) a� un destinataire 
+	 * Permet d'envoyer un String (passe en parametre de la methode) a un destinataire 
 	 * (User egalement en parametre de la methode)
 	 */
-	public MessageEvent envoyerMessage(User destinataire, String contenu) {
+	public void envoyerMessage(User destinataire, String contenu) {
 		MessageEvent msg = new MessageEvent(this, contenu, destinataire);
 		destinataire.onEventCreated(msg);
-		return msg;
 	}
 	
 	/**
@@ -86,7 +85,7 @@ public class User implements MessageListener, DemandeResaListener, ResaAccepteeL
 	}
 	public void reservationAcceptee(Trajet trajet, int nb_place) {
 			Reservation r = new Reservation(nb_place, this, trajet);
-			this.listeReservation.add(r);
+			this.addToReservationList(r);
 			r.setPrix(this.behavior.getAvantage(r.getPrix(), this));
 			r.maj(nb_place);
 		
