@@ -11,18 +11,20 @@ public class test {
 		
 		//1ere resa
 		Trajet trajet_1 = conducteur_1.deposerTrajet ("rue du pont de the Annecy","10/01/2022","Campus Annecy", 5, "7h50",4);
+		user_1.reserverTrajet(trajet_1, 1);
 		System.out.println(user_1);
+		// vérification des avantages liés au comportement 
+		System.out.println("Le conducteur a une carte de : " + conducteur_1.getCarte_carburant() + "€");
+		System.out.println("Le prix du trajet est : " + trajet_1.getPrix());
+		System.out.println("Le passage paie : " + user_1.chercherReservation(trajet_1).getPrix());
 		
 		//2eme resa
 		Trajet trajet_2 = conducteur_2.deposerTrajet ("rue du pont de the Annecy","22/01/2022","Campus Annecy", 5, "10h",4);
 		user_1.reserverTrajet(trajet_2, 2);
 		System.out.println(user_1);
 		System.out.println(conducteur_1);
-		user_1.reserverTrajet(trajet_1, 1);
-		System.out.println("Le conducteur a une carte de : " + conducteur_1.getCarte_carburant() + "€");
-		System.out.println("");
-		System.out.println("Le prix du trajet est : " + trajet_1.getPrix());
-		System.out.println("Le passage paie : " + user_1.chercherReservation(trajet_1).getPrix());
+		
+		
 		//l'auto incremente des id fonctionne bien la resa aussi
 		
 		//Test exception
@@ -31,3 +33,4 @@ public class test {
 		
 	}
 }
+
