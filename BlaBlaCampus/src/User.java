@@ -53,6 +53,15 @@ public class User implements MessageListener{
 	 
 	}
 	
+	public Reservation chercherReservation(Trajet trajet) {
+		for (Reservation r : listeReservation) {
+			if (trajet.equals(r.getTrajet())) {
+				return r;
+			}
+		}
+		return null;
+	}
+	
 	
 	// Equivalent de consulter profil 
 	public String toString() {

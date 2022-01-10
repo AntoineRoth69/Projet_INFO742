@@ -17,7 +17,7 @@ public class Conducteur extends User {
 		Trajet newTrajet = new Trajet(adresse_depart, date, adresse_arrivee, prix, horaire,
 			nbPlacesDispo, this);
 		listeTrajet.add(newTrajet);
-		this.carte_carburant = this.behavior.getAvantage(this.getCarte_carburant(), this);
+		this.behavior.getAvantage(this.getCarte_carburant(), this);
         return newTrajet;
 	}
 		
