@@ -6,14 +6,14 @@ public class User_unit_tests {
 	
 	private User ue = new Conducteur("Eloise","rue du pont de thé Annecy","eloise",true,new BadBehavior(),new Voiture("Peugeot","308","noire"));
 	private User ud = new User("Clemence"," ","eloise",true,new GoodBehavior());
-	private MessageEvent msg = new MessageEvent(ue,"bla",ud);
-	Trajet trajet_1 = ((Conducteur) ue).deposerTrajet ("rue du pont de the Annecy","10/01/2022","Campus Annecy", 5, "7h50",4);
+	private Trajet trajet_1 = ((Conducteur) ue).deposerTrajet ("rue du pont de the Annecy","10/01/2022","Campus Annecy", 5, "7h50",4);
 	
 	/**
 	 * test de la méthode envoyer message 
 	 */
 	@Test
 	public void envoyerMessage() {
+		MessageEvent msg = new MessageEvent(ue,"bla",ud);
 		MessageEvent m = this.ue.envoyerMessage(ud, "bla");
 		assertEquals(msg.getContenu(),m.getContenu());
 		assertEquals(msg.getDestinataire(),m.getDestinataire());
