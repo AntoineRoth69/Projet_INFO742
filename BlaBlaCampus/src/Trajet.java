@@ -49,17 +49,9 @@ public class Trajet {
 	}
 	
 	//On gère l'exception ici
-	public void updateNbPlaces(int nb_places) throws ReservationException {
-		int recup = this.nbPlacesDispo;
+	public void updateNbPlaces(int nb_places) {
 		this.nbPlacesDispo = nbPlacesDispo - nb_places;
-		//s'il n'y 
-		if (this.getNbPlacesDispo() <= 0) {
-			this.nbPlacesDispo = recup;
-			User resaOwner = chercherReservation().getOwner();
-			resaOwner.annulerReservation(this);
-	        throw new ReservationException("Resa impossible, nb de places max atteint");
-	    }
-			
+	
 	}
 
 	
