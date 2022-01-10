@@ -48,7 +48,7 @@ public class User implements MessageListener{
 	 * PErmet d'envoyer un String (passé en paramètre de la méthode) à un destinataire 
 	 * (User égakement en paramètre de la méthode)
 	 */
-	public void envoyerMessage(User destinataire, String contenu) {
+	public MessageEvent envoyerMessage(User destinataire, String contenu) {
 		MessageEvent msg = new MessageEvent(this, contenu, destinataire);
 		destinataire.onEventCreated(msg);
 		return msg;
@@ -60,14 +60,14 @@ public class User implements MessageListener{
 	 * de l'utilisateur
 	 */
 	public void annulerReservation(Trajet trajet) {
+		Reservation toRemove = null;
 		for (Reservation r : listeReservation) {
 			if (trajet.equals(r.getTrajet())) {
-				this.removeFromReservationList(r);
-				trajet.removeListe(r);
-				this.listeReservation.remove(r);
+				toRemove = r;
 			}
 		}
-
+		trajet.removeListe(toRemove);
+		this.removeFromReservationList(toRemove);
 	}
 	
 	/**
