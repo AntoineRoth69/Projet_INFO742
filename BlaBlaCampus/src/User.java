@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class User implements MessageListener{
+	private static final AtomicInteger ID_FACTORY = new AtomicInteger();
 	private int id_user;
-	private int id_1 = 0;
 	private String prenom;
 	private String adresse;
 	private String mdp;
@@ -13,8 +14,7 @@ public class User implements MessageListener{
 	
 	// Constructeur, correspond a la methode creer compte
 	public User (String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
-		this.id_user = id_1;
-		this.id_1 = id_1++;
+		this.id_user = ID_FACTORY.getAndIncrement();
 		this.prenom = prenom;
 		this.adresse = adresse;
 		this.mdp = mdp;

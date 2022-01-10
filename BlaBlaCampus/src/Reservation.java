@@ -1,7 +1,8 @@
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Reservation {
 	private int id_reservation;
-	private int id_1 = 0;
+	private static final AtomicInteger ID_FACTORY = new AtomicInteger();
 	private int nbPlaces;
 	private User owner;
 	private Trajet trajet;
@@ -9,8 +10,7 @@ public class Reservation {
 	
 	public Reservation(int nbPlaces, User owner, Trajet trajet) {
 		super();
-		this.id_reservation = id_1;
-		this.id_1 = id_1++;
+		this.id_reservation = ID_FACTORY.getAndIncrement();
 		this.nbPlaces = nbPlaces;
 		this.owner = owner;
 		this.trajet = trajet;

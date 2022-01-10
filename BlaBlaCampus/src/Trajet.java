@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Trajet {
 	private int id_trajet;
-	private int id_1 = 0;
+	private static final AtomicInteger ID_FACTORY = new AtomicInteger();
 	private String adresse_depart;
 	private String date;
 	private String adresse_arrivee;
@@ -15,8 +16,7 @@ public class Trajet {
 	
 	public Trajet(String adresse_depart, String date, String adresse_arrivee, int prix, String horaire,
 			int nbPlacesDispo, Conducteur conducteur) {
-		this.id_trajet = id_1;
-		this.id_1 = id_1++;
+		this.id_trajet = ID_FACTORY.getAndIncrement();
 		this.adresse_depart = adresse_depart;
 		this.date = date;
 		this.adresse_arrivee = adresse_arrivee;
