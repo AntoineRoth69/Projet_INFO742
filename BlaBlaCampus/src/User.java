@@ -50,7 +50,7 @@ public class User implements MessageListener{
 		Reservation r = new Reservation(nb_place, this, trajet) ;
 		this.listeReservation.add(r);
 		r.setPrix(this.behavior.getAvantage(r.getPrix(), this));
-	 
+		r.maj();	 
 	}
 	
 	public Reservation chercherReservation(Trajet trajet) {
