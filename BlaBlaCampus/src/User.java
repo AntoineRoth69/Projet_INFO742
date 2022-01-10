@@ -51,6 +51,7 @@ public class User implements MessageListener{
 	public void envoyerMessage(User destinataire, String contenu) {
 		MessageEvent msg = new MessageEvent(this, contenu, destinataire);
 		destinataire.onEventCreated(msg);
+		return msg;
 	}
 	
 	/**
@@ -61,6 +62,7 @@ public class User implements MessageListener{
 	public void annulerReservation(Trajet trajet) {
 		for (Reservation r : listeReservation) {
 			if (trajet.equals(r.getTrajet())) {
+				this.removeFromReservationList(r);
 				trajet.removeListe(r);
 				this.listeReservation.remove(r);
 			}
@@ -102,14 +104,20 @@ public class User implements MessageListener{
 
 	// Equivalent de consulter profil
 	public String toString() {
-		String s = "User [id_user=" + id_user + ", prenom=" + prenom + ", adresse=" + adresse + ", estConnecte="
-				+ estConnecte + ", Reservation effectuee :";
-
+		String s = "User [id_user=" + id_user + ", prenom=" + prenom + ", adresse=" + adresse + ", estConnecte="+ estConnecte + ", Reservation effectuee :";
 		for (Reservation r : listeReservation) {
 			s += r.toString();
 		}
 		s += "]";
 		return s;
+	}
+
+	public void addToReservationList(Reservation r) {
+		this.listeReservation.add(r);
+	}
+
+	public void removeFromReservationList(Reservation r) {
+		this.listeReservation.remove(r);
 	}
 
 	// Getter et setter
@@ -147,5 +155,13 @@ public class User implements MessageListener{
 
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+	public ArrayList<MessageEvent> getMessageRecus() {
+		return messageRecus;
+	}
+
+	public ArrayList<Reservation> getListeReservation() {
+		return listeReservation;
 	}
 }
