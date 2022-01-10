@@ -12,7 +12,7 @@ public class User implements MessageListener {
 	private ArrayList<MessageEvent> messageRecus;
 	private ArrayList<Reservation> listeReservation;
 
-	// Constructeur, correspond a la methode creer compte
+	// Constructeur, appele lors de la creation d'un compte
 	public User(String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
 		this.id_user = ID_FACTORY.getAndIncrement();
 		this.prenom = prenom;
@@ -33,15 +33,17 @@ public class User implements MessageListener {
 		}
 	}
 
-	public void envoyerMessage(User destinataire, String contenu) {
+	public MessageEvent envoyerMessage(User destinataire, String contenu) {
 		MessageEvent msg = new MessageEvent(this, contenu, destinataire);
 		destinataire.onEventCreated(msg);
+		return msg;
 	}
 
 	// Suppression de la resa dans trajet et dans user
 	public void annulerReservation(Trajet trajet) {
 		for (Reservation r : listeReservation) {
 			if (trajet.equals(r.getTrajet())) {
+				this.removeFromReservationList(r);
 				trajet.removeListe(r);
 				this.listeReservation.remove(r);
 			}
@@ -72,14 +74,20 @@ public class User implements MessageListener {
 
 	// Equivalent de consulter profil
 	public String toString() {
-		String s = "User [id_user=" + id_user + ", prenom=" + prenom + ", adresse=" + adresse + ", estConnecte="
-				+ estConnecte + ", Reservation effectuee :";
-
+		String s = "User [id_user=" + id_user + ", prenom=" + prenom + ", adresse=" + adresse + ", estConnecte="+ estConnecte + ", Reservation effectuee :";
 		for (Reservation r : listeReservation) {
 			s += r.toString();
 		}
 		s += "]";
 		return s;
+	}
+
+	public void addToReservationList(Reservation r) {
+		this.listeReservation.add(r);
+	}
+
+	public void removeFromReservationList(Reservation r) {
+		this.listeReservation.remove(r);
 	}
 
 	// Getter et setter
@@ -117,5 +125,13 @@ public class User implements MessageListener {
 
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+	public ArrayList<MessageEvent> getMessageRecus() {
+		return messageRecus;
+	}
+
+	public ArrayList<Reservation> getListeReservation() {
+		return listeReservation;
 	}
 }
