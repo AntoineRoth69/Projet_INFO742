@@ -1,12 +1,14 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
  
-public class Conducteur extends User {
+public class Conducteur extends User implements DemandeResaListener {
 	// Attributs
 	private Voiture voiture;
 	private ArrayList <Trajet>listeTrajet;
 	private float carte_carburant;
+	private Scanner scan = new Scanner(System.in);
 	
 	/**
 	 * @param prenom
@@ -43,6 +45,21 @@ public class Conducteur extends User {
         return newTrajet;
 	}
 		
+	public void onEventCreated(DemandeResaEvent ev) {
+		boolean choix = false;
+		System.out.println("Acceptez-vous cette resa ?");
+		System.out.print("Pour le trajet :");
+		System.out.println(ev.getTrajet());
+		System.out.print("Avec ");
+		System.out.print(ev.getNbPlace());
+		System.out.println(" places demandees.");
+		String reponse = this.scan.nextLine();
+		if (reponse.equals("oui")) {
+			choix = true;
+		}
+		ResaAccepteeEvent resaAcceptee = new ResaAccepteeEvent(this,choix,ev.getTrajet(), ev.getNbPlace());
+		((User) ev.getSource()).onEventCreated(resaAcceptee);
+	}
 
 	/**
 	 * @param accept

@@ -28,8 +28,6 @@ public class Reservation {
 			return "id_resa = " + id_reservation + "\n" ;
 		}
 		
-	
-
 	//getter et setter
 	public int getId_reservation() {
 		return id_reservation;

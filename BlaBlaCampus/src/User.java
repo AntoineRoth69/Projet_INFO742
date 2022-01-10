@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class User implements MessageListener{
+public class User implements MessageListener, DemandeResaListener, ResaAccepteeListener{
 	// Attributs
 	private static final AtomicInteger ID_FACTORY = new AtomicInteger();
 	private int id_user;
@@ -20,7 +20,7 @@ public class User implements MessageListener{
 	 * @param mdp
 	 * @param estConnecte
 	 * @param drivingBehavior
-	 * Constructeur de la classe, appele lors de la création d'un compte
+	 * Constructeur de la classe, appele lors de la crï¿½ation d'un compte
 	 */
 	public User (String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
 		this.id_user = ID_FACTORY.getAndIncrement();
@@ -45,7 +45,7 @@ public class User implements MessageListener{
 	/**
 	 * @param destinataire
 	 * @param contenu
-	 * Permet d'envoyer un String (passe en parametre de la methode) a  un destinataire 
+	 * Permet d'envoyer un String (passe en parametre de la methode) aï¿½ un destinataire 
 	 * (User egalement en parametre de la methode)
 	 */
 	public MessageEvent envoyerMessage(User destinataire, String contenu) {
@@ -70,22 +70,26 @@ public class User implements MessageListener{
 		this.removeFromReservationList(toRemove);
 	}
 	
-	/**
-	 * @param trajet
-	 * @param nb_place
-	 * Cette methode a pour role de reserver un trajet et d'indiquer le nombre de place reserve
-	 */
-
-	public void reserverTrajet(Trajet trajet, int nb_place) throws ReservationException {
+	public void demandeReservation(Trajet trajet, int nb_place) throws ReservationException {
 		if ((trajet.getNbPlacesDispo() - nb_place) <= 0) {
 			throw new ReservationException("Resa impossible, nb de places max atteint");
 		} 
-		else {
+		DemandeResaEvent newResa = new DemandeResaEvent(this, trajet, nb_place);
+		trajet.getConducteur().onEventCreated(newResa);
+		
+	}
+	
+	public void onEventCreated(ResaAccepteeEvent ev) {
+		if(ev.isChoix()) {
+			this.reservationAcceptee(ev.getTrajet(), ev.getNbPlace());
+		}
+	}
+	public void reservationAcceptee(Trajet trajet, int nb_place) {
 			Reservation r = new Reservation(nb_place, this, trajet);
 			this.listeReservation.add(r);
 			r.setPrix(this.behavior.getAvantage(r.getPrix(), this));
 			r.maj(nb_place);
-		}
+		
 	}
 	
 	/**

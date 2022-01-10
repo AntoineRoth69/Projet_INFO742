@@ -44,9 +44,15 @@ public class Trajet {
 		return null;
 	}
 	
+	//Met � jour le nb de places dispo dans le trajet 
 	public void updateNbPlaces(int nb_places) {
-		this.nbPlacesDispo = nbPlacesDispo - nb_places;
+		this.nbPlacesDispo = nbPlacesDispo - nb_places;	
 	}
+	
+	public String toString(){
+	return "depart de " + this.adresse_depart + " le " + this.date + " a " + this.horaire + "et arrivee a " + adresse_arrivee;
+}
+
 	
 	//Getter et setter
 	public String getAdresse_depart() {
@@ -100,4 +106,16 @@ public class Trajet {
 	public int getNbPlacesDispo() {
 		return nbPlacesDispo;
 	}
+
+	public Conducteur getConducteur() {
+		return conducteur;
+	}
+
+	public void setConducteur(Conducteur conducteur) {
+		this.conducteur = conducteur;
+	}
+	
+	
+	
+
 }
