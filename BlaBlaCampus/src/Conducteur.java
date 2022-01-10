@@ -32,7 +32,7 @@ public class Conducteur extends User {
 	 * @param horaire
 	 * @param nbPlacesDispo
 	 * @return Trajet
-	 * Cette méthode permet au conducteur de déposer un trajet
+	 * Cette methode permet au conducteur de deposer un trajet
 	 */
 	public Trajet deposerTrajet (String adresse_depart, String date, String adresse_arrivee, int prix, String horaire,
 			int nbPlacesDispo) {
@@ -48,7 +48,7 @@ public class Conducteur extends User {
 	 * @param accept
 	 * @param trajet
 	 * @param resa
-	 * Cette méthode permet au conducteur d'accepter ou non une réservation et donc un passager
+	 * Cette methode permet au conducteur d'accepter ou non une reservation et donc un passager
 	 */
 	public void validerReservation(boolean accept, Trajet trajet, Reservation resa) {
 		if (accept) {
@@ -63,7 +63,7 @@ public class Conducteur extends User {
 	/**
 	 * @param trajet
 	 * @param resa
-	 * Cette méthode a pour rôle de supprimer une réservation de la liste des trajets d'un conducteur
+	 * Cette methode a pour role de supprimer une reservation de la liste des trajets d'un conducteur
 	 */
 	public void supprimerReservation(Trajet trajet, Reservation resa) {
 		for (Trajet t : listeTrajet) {

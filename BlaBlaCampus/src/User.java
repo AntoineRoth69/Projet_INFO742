@@ -20,7 +20,7 @@ public class User implements MessageListener{
 	 * @param mdp
 	 * @param estConnecte
 	 * @param drivingBehavior
-	 * Constructeur de la classe, il correspond à la methode créer compte
+	 * Constructeur de la classe, appele lors de la cr�ation d'un compte
 	 */
 	public User (String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
 		this.id_user = ID_FACTORY.getAndIncrement();
@@ -45,8 +45,8 @@ public class User implements MessageListener{
 	/**
 	 * @param destinataire
 	 * @param contenu
-	 * PErmet d'envoyer un String (passé en paramètre de la méthode) à un destinataire 
-	 * (User égakement en paramètre de la méthode)
+	 * Permet d'envoyer un String (passe en parametre de la methode) a� un destinataire 
+	 * (User egalement en parametre de la methode)
 	 */
 	public MessageEvent envoyerMessage(User destinataire, String contenu) {
 		MessageEvent msg = new MessageEvent(this, contenu, destinataire);
@@ -56,7 +56,7 @@ public class User implements MessageListener{
 	
 	/**
 	 * @param trajet
-	 * Cette méthode permet la suppression de la réservation dans trajet et dans la liste de réservation
+	 * Cette methode permet la suppression de la reservation dans trajet et dans la liste de reservation
 	 * de l'utilisateur
 	 */
 	public void annulerReservation(Trajet trajet) {
@@ -73,7 +73,7 @@ public class User implements MessageListener{
 	/**
 	 * @param trajet
 	 * @param nb_place
-	 * Cette méthode a pour rôle de réserver un trajet et d'indiquer le nombre de place réservé
+	 * Cette methode a pour role de reserver un trajet et d'indiquer le nombre de place reserve
 	 */
 
 	public void reserverTrajet(Trajet trajet, int nb_place) throws ReservationException {
@@ -91,7 +91,7 @@ public class User implements MessageListener{
 	/**
 	 * @param trajet
 	 * @return Reservation or null
-	 * Cette méthode permet de trouver la réservation lié au trajet passé en paramètre de la méthode
+	 * Cette methode permet de trouver la reservation lie au trajet passe en parametre de la methode
 	 */
 	public Reservation chercherReservation(Trajet trajet) {
 		for (Reservation r : listeReservation) {

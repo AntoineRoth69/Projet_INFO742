@@ -26,7 +26,7 @@ public class test {
 		//l'auto incremente des id fonctionne bien la resa aussi
 		
 		
-		//Test des avantages liés au comportment
+		//Test des avantages lies au comportment
 		System.out.println("Le conducteur a une carte de : " + conducteur_1.getCarte_carburant() + " euros ");
 		System.out.println("Le prix du trajet est : " + trajet_1.getPrix()+" euros ");
 		System.out.println("Le passage paie : " + user_1.chercherReservation(trajet_1).getPrix()+" euros ");
