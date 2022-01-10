@@ -17,7 +17,7 @@ public class Reservation {
 		this.prix = trajet.getPrix()*nbPlaces;
 	}
 	
-	//exceptions s'il n'y a plus assez de places dispo pour ce trajet
+	//exceptions s'il n'y a plus assez de places disponibles pour ce trajet
 	public void exception() throws ReservationException {
 		    if (trajet.getNbPlacesDispo() <= 0) {
 		        throw new ReservationException("Il n'y a plus assez de places pour ce trajet");
