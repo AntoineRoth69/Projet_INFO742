@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class User implements MessageListener {
+public class User implements MessageListener{
+	// Attributs
 	private static final AtomicInteger ID_FACTORY = new AtomicInteger();
 	private int id_user;
 	private String prenom;
@@ -10,10 +11,18 @@ public class User implements MessageListener {
 	private boolean estConnecte;
 	protected Behavior behavior;
 	private ArrayList<MessageEvent> messageRecus;
-	private ArrayList<Reservation> listeReservation;
-
-	// Constructeur, correspond a la methode creer compte
-	public User(String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
+	private ArrayList <Reservation>listeReservation;
+	
+	
+	/**
+	 * @param prenom
+	 * @param adresse
+	 * @param mdp
+	 * @param estConnecte
+	 * @param drivingBehavior
+	 * Constructeur de la classe, il correspond à la methode créer compte
+	 */
+	public User (String prenom, String adresse, String mdp, boolean estConnecte, Behavior drivingBehavior) {
 		this.id_user = ID_FACTORY.getAndIncrement();
 		this.prenom = prenom;
 		this.adresse = adresse;
@@ -25,20 +34,30 @@ public class User implements MessageListener {
 	}
 
 	// Methodes
+	
 	@Override
 	public void onEventCreated(MessageEvent ev) {
-		// TODO Auto-generated method stub
-		if (ev.getDestinataire().equals(this)) {
+		if(ev.getDestinataire().equals(this)) {
 			this.messageRecus.add(ev);
 		}
 	}
-
+	
+	/**
+	 * @param destinataire
+	 * @param contenu
+	 * PErmet d'envoyer un String (passé en paramètre de la méthode) à un destinataire 
+	 * (User égakement en paramètre de la méthode)
+	 */
 	public void envoyerMessage(User destinataire, String contenu) {
 		MessageEvent msg = new MessageEvent(this, contenu, destinataire);
 		destinataire.onEventCreated(msg);
 	}
-
-	// Suppression de la resa dans trajet et dans user
+	
+	/**
+	 * @param trajet
+	 * Cette méthode permet la suppression de la réservation dans trajet et dans la liste de réservation
+	 * de l'utilisateur
+	 */
 	public void annulerReservation(Trajet trajet) {
 		for (Reservation r : listeReservation) {
 			if (trajet.equals(r.getTrajet())) {
@@ -48,6 +67,12 @@ public class User implements MessageListener {
 		}
 
 	}
+	
+	/**
+	 * @param trajet
+	 * @param nb_place
+	 * Cette méthode a pour rôle de réserver un trajet et d'indiquer le nombre de place réservé
+	 */
 
 	public void reserverTrajet(Trajet trajet, int nb_place) throws ReservationException {
 		if ((trajet.getNbPlacesDispo() - nb_place) <= 0) {
@@ -60,7 +85,12 @@ public class User implements MessageListener {
 			r.maj(nb_place);
 		}
 	}
-
+	
+	/**
+	 * @param trajet
+	 * @return Reservation or null
+	 * Cette méthode permet de trouver la réservation lié au trajet passé en paramètre de la méthode
+	 */
 	public Reservation chercherReservation(Trajet trajet) {
 		for (Reservation r : listeReservation) {
 			if (trajet.equals(r.getTrajet())) {
