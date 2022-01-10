@@ -27,7 +27,7 @@ public class User_unit_tests {
 	@Test
 	public void testReserverTrajet() throws ReservationException {
 		int sizeListRes = this.ue.getListeReservation().size();
-		ue.reserverTrajet(this.trajet_1,1);
+		this.ue.reservationAcceptee(this.trajet_1,1);
 		assertEquals(sizeListRes+1,this.ue.getListeReservation().size());
 		assertEquals(this.trajet_1,this.ue.getListeReservation().get(sizeListRes).getTrajet());
 	}
@@ -38,7 +38,7 @@ public class User_unit_tests {
 	 */
 	@Test
 	public void testAnnulerReservation() throws ReservationException {
-		this.ue.reserverTrajet(this.trajet_1,1);
+		this.ue.reservationAcceptee(this.trajet_1,1);
 		int sizeListRes = this.ue.getListeReservation().size();
 		this.ue.annulerReservation(trajet_1);
 		assertEquals(sizeListRes-1,this.ue.getListeReservation().size());
